@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard - Tododo</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #4154f1;
+        --secondary-color: #012970;
+        --light-background: #f6f9ff;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 0;
+        box-shadow: 0 2px 20px rgba(1, 41, 112, 0.1);
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+
+      .nav-link {
+        color: var(--secondary-color);
+        font-weight: 500;
+        padding: 10px 15px;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: #5969f3;
+      }
+
+      .hero {
+        background: var(--light-background);
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        color: #444444;
+        margin-bottom: 30px;
+      }
+
+      .features {
+        padding: 80px 0;
+      }
+
+      .feature-box {
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(1, 41, 112, 0.08);
+        border-radius: 8px;
+        transition: 0.3s;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-icon {
+        font-size: 38px;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .feature-box h4 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+      }
+
+      .about {
+        background: var(--light-background);
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      .auth-form {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 20px;
+        box-shadow: 0 0 30px rgba(1, 41, 112, 0.08);
+        border-radius: 8px;
+      }
+
+      .dashboard-stats {
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(1, 41, 112, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .stat-card {
+        padding: 20px;
+        border-radius: 8px;
+        background: var(--light-background);
+        margin-bottom: 15px;
+      }
+
+      .detail-section {
+        padding: 40px 0;
+      }
+
+      .detail-image {
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(1, 41, 112, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 36px;
+        }
+
+        .feature-box {
+          margin-bottom: 20px;
+        }
+
+        .auth-form {
+          margin: 40px auto;
+          padding: 15px;
+        }
+      }
+
+      footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 10px;
+        background-color: #00c3ff;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 bg-light" style="min-height: 100vh">
+          <div class="text-center p-4">
+            <img
+              src="https://avatars.githubusercontent.com/u/128621626?v=4"
+              class="rounded-circle"
+              width="80"
+              height="80"
+              alt="Profile Picture"
+            />
+            <h5><?php echo htmlspecialchars($username); ?></h5>
+            <p><?php echo htmlspecialchars($email); ?></p>
+          </div>
+          <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link">Beranda</a></li>
+            <li class="nav-item">
+              <a href="tasks.php" class="nav-link">Tugas</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Acara</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Catatan</a></li>
+            <li class="nav-item">
+              <a href="calendar.php" class="nav-link">Kalender</a>
+            </li>
+            <li class="nav-item">
+              <a href="settings.php" class="nav-link">Pengaturan</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-9">
+          <div class="container p-4">
+            <h4>Dashboard</h4>
+            <div class="mb-4">
+              <button
+                class="btn btn-success"
+                data-toggle="modal"
+                data-target="#addTaskModal"
+              >
+                Tambah Tugas
+              </button>
+              <button
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#addEventModal"
+              >
+                Tambah Acara
+              </button>
+              <button
+                class="btn btn-info"
+                data-toggle="modal"
+                data-target="#addNoteModal"
+              >
+                Tambah Catatan
+              </button>
+            </div>
+    
+            <div class="alert alert-info text-center">
+              Belum ada apa apa, semua fungsi disini ada di https://github.com/hnxzl/tododo/
+            </div>
+            <?php } else { ?>
+            <h5>Tugas</h5>
+            <div class="row">
+        
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                  
+                    </h5>
+                    <p class="card-text">
+                    </p>
+                    <p class="card-text">
+                    </p>
+                    <span
+                      class="badge badge-<?php echo ($task['priority'] == 'tinggi') ? 'danger' : (($task['priority'] == 'sedang') ? 'warning' : 'success'); ?>"
+                    >
+               
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <h5>Acara</h5>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                    </h5>
+                    <p class="card-text">
+                    </p>
+                    <p class="card-text">
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </div>
+
+            <h5>Catatan</h5>
+            <div class="row">
+     
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">
+
+                    </h5>
+                    <p class="card-text">
+
+                    </p>
+                    <span
+                      class="badge badge-<?php echo ($note['priority'] == 'tinggi') ? 'danger' : (($note['priority'] == 'sedang') ? 'warning' : 'success'); ?>"
+                    >
+
+                    </span>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="add_task.php" method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah Tugas</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="taskTitle">Judul Tugas</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="task_title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="dueDate">Tanggal Jatuh Tempo</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="due_date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="assignedBy">Ditugaskan oleh</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="assigned_by"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="priority">Prioritas</label>
+                <select class="form-control" name="priority" required>
+                  <option value="">Pilih Prioritas</option>
+                  <option value="rendah">Rendah</option>
+                  <option value="sedang">Sedang</option>
+                  <option value="tinggi">Tinggi</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Simpan Tugas
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="add_event.php" method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah Acara</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="eventTitle">Judul Acara</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="event_title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="startDate">Mulai Tanggal</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="start_date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="endDate">Selesai Tanggal</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="end_date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="eventTime">Jam Acara</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  name="event_time"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Simpan Acara
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="add_note.php" method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah Catatan</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="noteTitle">Judul Catatan</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="note_title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="noteContent">Isi Catatan</label>
+                <textarea
+                  class="form-control"
+                  name="note_content"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="notePriority">Prioritas (opsional)</label>
+                <select class="form-control" name="note_priority">
+                  <option value="">Pilih Prioritas</option>
+                  <option value="rendah">Rendah</option>
+                  <option value="sedang">Sedang</option>
+                  <option value="tinggi">Tinggi</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Tutup
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Simpan Catatan
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="text-center p-3"></footer>
+      <span>Copyright by </span>
+      22552011038_Ezra Ben Hanschel_TIF RP 22 CID
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
