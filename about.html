@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - TodoDo</title>
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #4154f1;
+        --secondary-color: #012970;
+        --light-background: #f6f9ff;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 0;
+        box-shadow: 0 2px 20px rgba(1, 41, 112, 0.1);
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+
+      .nav-link {
+        color: var(--secondary-color);
+        font-weight: 500;
+        padding: 10px 15px;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        transition: 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: #5969f3;
+      }
+
+      .about {
+        background: var(--light-background);
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      .about-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #444444;
+        text-align: justify;
+        margin-bottom: 20px;
+      }
+
+      footer {
+        background-color: #012970;
+        font-size: 14px;
+        color: #f6f9ff;
+        position: relative;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">TodoDo</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#features">Features</a>
+            </li>
+          </ul>
+          <a href="login.html" class="btn btn-primary">Login</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About TodoDo</h2>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="about-text">
+              TodoDo is a powerful task management application designed to help
+              you organize your tasks, events, and notes in one unified
+              platform. Our app comes with innovative features such as
+              <strong>priority flags</strong>, and time-based filters that
+              enable you to efficiently sort your tasks by daily, weekly, or
+              monthly schedules. TodoDo ensures you stay productive by offering
+              flexibility and customization for your workflow. Whether you're
+              planning a project, setting goals, or managing day-to-day tasks,
+              TodoDo has got you covered.
+            </p>
+            <p class="about-text">
+              With TodoDo, you can focus on what truly matters and make the most
+              out of your time. Start using TodoDo today and experience the ease
+              of managing your tasks like never before!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center p-3">
+      <span>Copyright by </span>
+      22552011038_Ezra Ben Hanschel_TIF RP 22 CID
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

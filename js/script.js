@@ -39,14 +39,6 @@ const validateLoginForm = () => {
   });
 };
 
-if (email === "user@example.com" && password === "password123") {
-  sessionStorage.setItem("isLoggedIn", true);
-  alert("Login successful!");
-  window.location.href = "dashboard.html";
-} else {
-  alert("Invalid email or password.");
-}
-
 const validateRegisterForm = () => {
   const registerForm = document.getElementById("registerForm");
 
